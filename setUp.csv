@@ -1,0 +1,18 @@
+﻿Port Name,COM3
+BaudRate,3000000
+Frequency,120316
+Mode,Generator
+Increment,1
+"Time Up (if mode = ""Square Wave""",1000
+"Time Down (if mode = ""Square Wave"")",1000
+Through DICO (1:yes;0:no),1
+DICO nbr,7
+DICO circuit (0:open;1:50Ohms;2:RF meter),1
+Start Level,-20
+End Level,10
+Board Label,B
+Sample Rate,5000
+Nbr of Points per level,100
+Min value,0
+Max value,2.5
+Attenuator ,0
