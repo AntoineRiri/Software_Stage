@@ -1,0 +1,35 @@
+listOfLabel = list_label(PATH);
+Xth = -65:0;
+Yth = -0.025*Xth + 0.5;
+figure;
+hold on;
+path = 'Calibration';
+path = fullfile(PATH, path);
+for i = 1:length(listOfLabel)
+    folder1 = sprintf('Calibration%s', listOfLabel(i));
+    folder1 = fullfile(path, folder1);
+    %folder2 = sprintf('Calibration%sAttenuated', listOfLabel(i));
+    %folder2 = fullfile(path, folder2);
+    data1 = CSVRead(folder1);
+    %data2 = CSVRead(folder2);
+    data1 = meanSTD(data1);
+    %data2 = meanSTD(data2);
+    x1 = data1(:,1);
+    %x2 = data2(:,1)-20;
+    y1 = data1(:,2);
+    %y2 = data2(:,2);
+    %y1 = y1 - reshape(Yth, length(x), []);
+    err1 = data1(:,3);
+    %err2 = data2(:,3);
+    errorbar(x1, y1,err1,'DisplayName',listOfLabel(i));
+    %curveName = sprintf('%s Att.',listOfLabel(i));
+    %errorbar(x2, y2, err2, 'DisplayName', curveName);
+end
+hold off;
+distinctcolour();
+grid on;
+Title = sprintf('Calibration AD8318 Boards');
+title(Title);
+xlabel('Pin (dBm)');
+ylabel('Vout (V)');
+legend('Location','bestoutside');
